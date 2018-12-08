@@ -13,8 +13,8 @@ The rot13Reader type is provided for you. Make it an io.Reader by implementing i
 package main
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -28,28 +28,28 @@ func (reader *rot13Reader) Read(out []byte) (int, error) {
 	i_out := 0
 	buffer := make([]byte, 8)
 	for {
-		n, err := reader.r.Read(buffer);
+		n, err := reader.r.Read(buffer)
 		if err == io.EOF {
 			break
 		}
 
 		for i := 0; i < n; i++ {
-			if len(out) < i_out + 1 {
+			if len(out) < i_out+1 {
 				return i_out, errors.New(fmt.Sprintf(
-					"output buffer too small: %d < %d", len(out), i_out + 1))
+					"output buffer too small: %d < %d", len(out), i_out+1))
 			}
 			b := buffer[i]
 			if b >= 'a' && b <= 'z' {
-				out[i_out] = ((b - 'a') + 13) % 26 + 'a'
+				out[i_out] = ((b-'a')+13)%26 + 'a'
 			} else if b >= 'A' && b <= 'Z' {
-				out[i_out] = ((b - 'A') + 13) % 26 + 'A'
+				out[i_out] = ((b-'A')+13)%26 + 'A'
 			} else {
 				out[i_out] = b
 			}
 			i_out++
 		}
 	}
-	return i_out, io.EOF  // needs to EOF to signal the end
+	return i_out, io.EOF // needs to EOF to signal the end
 }
 
 func main() {

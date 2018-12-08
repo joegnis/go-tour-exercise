@@ -11,9 +11,9 @@ but maps alone are not safe for concurrent use!
 package main
 
 import (
-	"time"
-	"sync"
 	"fmt"
+	"sync"
+	"time"
 )
 
 type Fetcher interface {
@@ -23,8 +23,8 @@ type Fetcher interface {
 }
 
 type ParallelCrawler struct {
-	fetched	map[string]int
-	mux		sync.Mutex
+	fetched map[string]int
+	mux     sync.Mutex
 }
 
 func (c *ParallelCrawler) Crawl(url string, depth int, fetcher Fetcher) {

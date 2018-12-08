@@ -6,9 +6,9 @@ For instance, IPAddr{1, 2, 3, 4} should print as "1.2.3.4".
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
-	"fmt"
 )
 
 type IPAddr [4]byte
@@ -16,7 +16,7 @@ type IPAddr [4]byte
 func (addr IPAddr) String() string {
 	string_addr := make([]string, 4)
 	for i, byte_addr := range addr {
-		string_addr[i] = strconv.Itoa(int( byte_addr ))
+		string_addr[i] = strconv.Itoa(int(byte_addr))
 	}
 	return strings.Join(string_addr, ".")
 }

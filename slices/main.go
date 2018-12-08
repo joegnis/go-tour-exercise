@@ -7,10 +7,10 @@ func Pic(dx, dy int) [][]uint8 {
 	for j := range ay {
 		ay[j] = make([]uint8, dx)
 		for i := range ay[j] {
-			ay[j][i] = uint8(i^j)
+			ay[j][i] = uint8(i ^ j)
 		}
 	}
-	return ay;
+	return ay
 }
 
 func main() {
